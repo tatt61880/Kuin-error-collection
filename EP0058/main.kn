@@ -1,0 +1,6 @@
+func main()
+	var x: int
+	if(true)
+		var x: int
+	end if
+end func
