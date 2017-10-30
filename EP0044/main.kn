@@ -1,0 +1,4 @@
+func f()
+	switch(0)
+		if(true)
+		end if

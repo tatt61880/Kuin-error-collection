@@ -1,0 +1,4 @@
+func f()
+	switch(1)
+	default
+	default

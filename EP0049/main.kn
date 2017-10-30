@@ -1,0 +1,4 @@
+func main()
+	while(true, true)
+	end while
+end func
