@@ -1,0 +1,3 @@
+class C()
+	+const c: int :: 0
+end class
