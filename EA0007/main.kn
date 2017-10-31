@@ -1,0 +1,6 @@
+func main()
+	var c: C :: #C
+	class C()
+		*var x: int
+	end class
+end func

@@ -1,0 +1,3 @@
+func main()
+	do \main@main()
+end func

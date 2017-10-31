@@ -1,0 +1,3 @@
+func main()
+	do \sub@x :: 1
+end func
