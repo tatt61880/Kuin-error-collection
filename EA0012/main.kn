@@ -1,0 +1,7 @@
+func main()
+	var e: E :: %a
+	enum E
+		a :: 9223372036854775807
+		b
+	end enum
+end func

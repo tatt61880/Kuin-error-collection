@@ -1,0 +1,4 @@
+func main()
+	switch(true)
+	end switch
+end func

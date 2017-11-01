@@ -1,0 +1,4 @@
+const c: int :: ^""
+func main()
+	var x: int :: @c
+end func
