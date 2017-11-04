@@ -1,0 +1,6 @@
+func main()
+	do f()
+	func f(): int
+		ret
+	end func
+end func

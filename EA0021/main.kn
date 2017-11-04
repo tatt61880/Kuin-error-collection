@@ -1,0 +1,4 @@
+func main()
+	for(0.0, 3)
+	end for
+end func

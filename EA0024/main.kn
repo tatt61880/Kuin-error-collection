@@ -1,0 +1,5 @@
+func main()
+	var x: int :: 1
+	for(0, 3, x)
+	end for
+end func
