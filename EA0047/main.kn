@@ -1,0 +1,5 @@
+func main()
+	func f()
+	end func
+	do f(1)
+end func

@@ -1,0 +1,4 @@
+func main()
+	const x: int :: 0
+	do x :$ x
+end func

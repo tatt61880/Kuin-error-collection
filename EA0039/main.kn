@@ -1,0 +1,3 @@
+func main()
+	var f: bool :: null = null
+end func
