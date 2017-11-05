@@ -1,0 +1,4 @@
+func main()
+	do cui@print("")
+	var wndMain: wnd@Wnd
+end func

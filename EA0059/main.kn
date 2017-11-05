@@ -1,0 +1,5 @@
+func main()
+	enum E
+	end enum
+	var e: E :: %a
+end func

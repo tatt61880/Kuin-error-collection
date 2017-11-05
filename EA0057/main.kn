@@ -1,4 +1,6 @@
 func main()
 	var x: int
-	do ##x
+	func f()
+		do x :: 1
+	end func
 end func

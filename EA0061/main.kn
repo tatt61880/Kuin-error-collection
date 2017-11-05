@@ -1,4 +1,3 @@
 func main()
-	var x: int
-	do ##x
+	var x: int :: ^[%e]
 end func

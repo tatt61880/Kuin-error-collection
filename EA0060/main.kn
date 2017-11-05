@@ -1,0 +1,6 @@
+func main()
+	enum E
+		e
+	end enum
+	do cui@print("\{%e}")
+end func
