@@ -1,0 +1,6 @@
+func main()
+	var x: int
+	while(true)
+		break x
+	end while
+end func
