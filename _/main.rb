@@ -1,5 +1,5 @@
 require 'find'
-require "open3"
+require 'open3'
 
 curDir = Dir.pwd
 Dir::chdir("..")
@@ -9,8 +9,9 @@ count = 0
 Find.find(dir) {|fpath|
 	Find.prune if(fpath == curDir)
 	if fpath =~ /main.kn$/
-		out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i #{fpath} -e cui -q > #{curDir}/output.txt\"")
-		File.open(curDir + "/output.txt", 'r'){|f|
+		outputFile = curDir + "/output.txt"
+		out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i #{fpath} -e cui -q > #{outputFile}\"")
+		File.open(outputFile, 'r'){|f|
 			buff = f.read().encode("UTF-8", "UTF-16LE")
 			if buff =~ /^\[Error\]/
 				err = buff[8, 6]
