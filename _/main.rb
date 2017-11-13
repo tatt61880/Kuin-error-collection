@@ -6,6 +6,7 @@ Dir::chdir("..")
 dir = Dir.pwd
 
 countOk = 0
+countEmpty = 0
 countUnexpected = 0
 Find.find(dir) {|fpath|
 	Find.prune if(fpath == curDir)
@@ -29,10 +30,17 @@ Find.find(dir) {|fpath|
 				countUnexpected += 1
 			end
 		}
+	else
+		if fpath =~ /#{dir}\/\w+/ && File::ftype(fpath) == "directory"
+			if Dir.glob("#{fpath}/*.kn").count == 0
+				countEmpty += 1
+				puts fpath
+			end
+		end
 	end
 }
 
-puts "#{countOk}/#{countOk + countUnexpected}"
+puts "#{countOk}/#{countOk + countUnexpected} (empty-folder: #{countEmpty})"
 if countUnexpected == 0
 	puts "Congratulations!"
 else
