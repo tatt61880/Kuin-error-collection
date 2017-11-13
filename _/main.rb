@@ -5,7 +5,8 @@ curDir = Dir.pwd
 Dir::chdir("..")
 dir = Dir.pwd
 
-count = 0
+countOk = 0
+countUnexpected = 0
 Find.find(dir) {|fpath|
 	Find.prune if(fpath == curDir)
 	if fpath =~ /main.kn$/
@@ -17,20 +18,23 @@ Find.find(dir) {|fpath|
 				err = buff[8, 6]
 				if fpath =~ /#{err}\/\w+.kn$/
 					puts "#{err} ok"
+					countOk += 1
 				else
 					puts "Error #{fpath} [#{err}]"
-					count += 1
+					countUnexpected += 1
 				end
 			else
 				puts "Error #{fpath}"
 				puts " #{buff}"
-				count += 1
+				countUnexpected += 1
 			end
 		}
 	end
 }
-if count == 0
+
+puts "#{countOk}/#{countOk + countUnexpected}"
+if countUnexpected == 0
 	puts "Congratulations!"
 else
-	puts "Count for unexpected result = #{count}."
+	puts "Count for unexpected result = #{countUnexpected}."
 end
