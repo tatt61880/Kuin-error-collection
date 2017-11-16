@@ -1,0 +1,4 @@
+func main()
+	alias x: int
+	do x :: 1
+end func
