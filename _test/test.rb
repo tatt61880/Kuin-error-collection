@@ -5,15 +5,17 @@ curDir = Dir.pwd
 Dir::chdir("..")
 dir = Dir.pwd
 
+tempFilename = "__temp__.txt"
+tempFilepath = "#{curDir}/#{tempFilename}"
+
 countOk = 0
 countEmpty = 0
 countUnexpected = 0
-Find.find(dir) {|fpath|
+Find.find(dir){|fpath|
 	Find.prune if(fpath == curDir)
 	if fpath =~ /main.kn$/
-		outputFile = curDir + "/output.txt"
-		out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i #{fpath} -e cui -q > #{outputFile}\"")
-		File.open(outputFile, 'r'){|f|
+		out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i #{fpath} -e cui -q > #{tempFilepath}\"")
+		File.open(tempFilepath, 'r'){|f|
 			buff = f.read().encode("UTF-8", "UTF-16LE")
 			if buff =~ /^\[Error\]/
 				err = buff[8, 6]
@@ -39,6 +41,7 @@ Find.find(dir) {|fpath|
 		end
 	end
 }
+File.unlink tempFilepath
 
 puts "#{countOk}/#{countOk + countUnexpected} (empty-folder: #{countEmpty})"
 if countUnexpected == 0
