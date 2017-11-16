@@ -46,3 +46,5 @@ if countUnexpected == 0
 else
 	puts "Count for unexpected result = #{countUnexpected}."
 end
+
+system("pause")
