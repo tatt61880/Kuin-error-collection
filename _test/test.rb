@@ -16,7 +16,7 @@ Find.find(dir){|fpath|
 	if fpath =~ /main.kn$/
 		out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i #{fpath} -e cui -q > #{tempFilepath}\"")
 		File.open(tempFilepath, 'r'){|f|
-			buff = f.read().encode("UTF-8", "UTF-16LE")
+			buff = f.read().encode("UTF-8", "UTF-8")
 			if buff =~ /^\[Error\]/
 				err = buff[8, 6]
 				if fpath =~ /#{err}\/\w+.kn$/
