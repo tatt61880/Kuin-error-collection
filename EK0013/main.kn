@@ -1,0 +1,4 @@
+func [_]f()
+end func
+func main()
+end func

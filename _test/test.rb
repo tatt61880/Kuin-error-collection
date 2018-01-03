@@ -13,13 +13,18 @@ countEmpty = 0
 countUnexpected = 0
 Find.find(dir){|fpath|
 	Find.prune if(fpath == curDir)
-	if fpath =~ /main.kn$/
-		out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i #{fpath} -e cui -q > #{tempFilepath}\"")
+	if fpath =~ /main.(kn|bat)$/
+		Dir.chdir(File::dirname(fpath))
+		if fpath =~ /main.kn$/
+			out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i main.kn -e cui -q > #{tempFilepath}\"")
+		else
+			out, err, status = Open3.capture3("cmd.exe /Q /C \"main.bat > #{tempFilepath}\"")
+		end
 		File.open(tempFilepath, 'r'){|f|
 			buff = f.read().encode("UTF-8", "UTF-8")
 			if buff =~ /^\[Error\]/
 				err = buff[8, 6]
-				if fpath =~ /#{err}\/\w+.kn$/
+				if fpath =~ /#{err}\/main.(kn|bat)$/
 					puts "#{err} ok"
 					countOk += 1
 				else
@@ -33,10 +38,10 @@ Find.find(dir){|fpath|
 			end
 		}
 	else
-		if fpath =~ /#{dir}\/\w+/ && File::ftype(fpath) == "directory"
-			if Dir.glob("#{fpath}/*.kn").count == 0
+		if fpath =~ /#{dir}\/\w+$/ && File::ftype(fpath) == "directory"
+			if Dir.glob("#{fpath}/main.kn").count == 0 && Dir.glob("#{fpath}/main.bat").count == 0
 				countEmpty += 1
-				puts fpath
+				puts fpath + " has no main.(kn|bat)"
 			end
 		end
 	end
