@@ -29,6 +29,7 @@ Find.find(dir){|fpath|
 					countOk += 1
 				else
 					puts "Unexpected result: #{fpath} [#{err}]"
+					# puts "#{buff}"
 					countUnexpected += 1
 				end
 			else
