@@ -16,24 +16,24 @@ Find.find(dir){|fpath|
 	if fpath =~ /main.(kn|bat)$/
 		Dir.chdir(File::dirname(fpath))
 		if fpath =~ /main.kn$/
-			out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i main.kn -e cui -q > #{tempFilepath}\"")
+			out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i main.kn -e exe -s ../../KuinInKuin/build/deploy_exe/sys/ -q > #{tempFilepath}\"")
 		else
 			out, err, status = Open3.capture3("cmd.exe /Q /C \"main.bat > #{tempFilepath}\"")
 		end
 		File.open(tempFilepath, 'r'){|f|
-			buff = f.read().encode("UTF-8", "UTF-8")
-			if buff =~ /^\[Error\]/
-				err = buff[8, 6]
+			buff = f.read().encode("UTF-8", "Shift_JIS")
+			if buff =~ /^0x[0-9A-F]+:/
+				err = buff[0, 10]
 				if fpath =~ /#{err}\/main.(kn|bat)$/
 					puts "#{err} ok"
 					countOk += 1
 				else
-					puts "Error #{fpath} [#{err}]"
+					puts "Unexpected result: #{fpath} [#{err}]"
 					countUnexpected += 1
 				end
 			else
-				puts "Error #{fpath}"
-				puts " #{buff}"
+				puts "Unexpected result: #{fpath}"
+				puts "#{buff}"
 				countUnexpected += 1
 			end
 		}
