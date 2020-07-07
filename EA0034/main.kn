@@ -1,6 +1,0 @@
-func main()
-	var x: int
-	while(true)
-		skip x
-	end while
-end func
