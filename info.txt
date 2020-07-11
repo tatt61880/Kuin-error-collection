@@ -40,10 +40,10 @@ o	0x0001001A	nonCorrespondingEnd
 o	0x0001001B	elifOrElseAfterElse
 o	0x0001001C	caseOrDefaultAfterDefault
 o	0x0001001D	catchOrFinallyAfterFinally
-	0x0001001E	wrongClause
+o	0x0001001E	wrongClause
 o	0x0001001F	wrongClauseInSwitch
-	0x00010020	wrongWord
-	0x00010021	wrongOperator
+o	0x00010020	wrongWord
+o	0x00010021	wrongOperator
 o	0x00010022	wrongEscSequence
 o	0x00010023	wrongCharCodeRepresentation
 	0x00010024	nonClosingStrLiteral
