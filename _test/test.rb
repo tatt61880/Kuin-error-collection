@@ -18,7 +18,7 @@ Find.find(dir){|fpath|
 		if fpath =~ /main.kn$/
 			out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i main.kn -e exe -s ../../KuinInKuin/build/deploy_exe/sys/ -q > #{tempFilepath}\"")
 		else
-			out, err, status = Open3.capture3("cmd.exe /Q /C \"main.bat > #{tempFilepath}\"")
+			out, err, status = Open3.capture3("cmd.exe /Q /C \"main.bat > #{tempFilepath}\" ../../KuinInKuin/build/deploy_exe/sys/")
 		end
 		File.open(tempFilepath, 'r'){|f|
 			buff = f.read().encode("UTF-8", "Shift_JIS")
