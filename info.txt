@@ -9,7 +9,7 @@ o	0x00000007	sysFileBroken
 o	0x00000008	iconFileBroken
 	0x00000009	tooManyResources
 	0x0000000A	archivingFilePathMustBeAscii
-		
+
 	0x00010000	_parsingErrs :: 0x00010000
 o	0x00010001	sameIdentifierInSameScope
 o	0x00010002	sameIdentifierInUpperScope
@@ -59,7 +59,7 @@ o	0x0001002D	wrongBitTypeLiteral
 o	0x0001002E	integerLiteralOverflowed
 	0x0001002F	parentOfSubsourceNotFound
 o	0x00010030	cannotIncludeInSubsourceFile
-		
+
 	0x00020000	_analysisErrs :: 0x00020000
 o	0x00020001	noMainFunc
 o	0x00020002	wrongMainFunc
@@ -125,9 +125,9 @@ o	0x0002003D	allElementsAreEnum
 o	0x0002003E	allElementsAreNull
 o	0x0002003F	inaccessibleElement
 	0x00020040	excodeMustBeStrConst
-	0x00020041	dictKeyMustBeComparable
-	0x00020042	cannotInstantiateDirectly
-		
+o	0x00020041	dictKeyMustBeComparable
+o	0x00020042	cannotInstantiateDirectly
+
 	0x00030000	_nonErrs :: 0x00030000
 	0x00030001	success
 	0x00030002	failure

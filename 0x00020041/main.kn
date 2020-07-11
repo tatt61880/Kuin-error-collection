@@ -1,0 +1,3 @@
+func main()
+	var d: dict<dict<int, int>, int>
+end func
