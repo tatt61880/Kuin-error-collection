@@ -16,9 +16,9 @@ Find.find(dir){|fpath|
 	if fpath =~ /main.(kn|bat)$/
 		Dir.chdir(File::dirname(fpath))
 		if fpath =~ /main.kn$/
-			out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i main.kn -e exe -s ../../KuinInKuin/build/deploy_exe/sys/ -q > #{tempFilepath}\"")
+			out, err, status = Open3.capture3("cmd.exe /Q /C \"kuincl -i main.kn -e exe -q > #{tempFilepath}\"")
 		else
-			out, err, status = Open3.capture3("cmd.exe /Q /C \"main.bat > #{tempFilepath}\" ../../KuinInKuin/build/deploy_exe/sys/")
+			out, err, status = Open3.capture3("cmd.exe /Q /C \"main.bat > #{tempFilepath}\"")
 		end
 		File.open(tempFilepath, 'r'){|f|
 			buff = f.read().encode("UTF-8", "Shift_JIS")

@@ -1,2 +1,2 @@
 @echo off
-kuincl -i sub.kn -o ? -q -s %1
+kuincl -i sub.kn -o ? -q
